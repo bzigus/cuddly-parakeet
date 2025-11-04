@@ -1,6 +1,7 @@
 'use client';
 
 import { useState, useEffect } from 'react';
+import DOMPurify from 'isomorphic-dompurify';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent } from '@/components/ui/card';
 import ComposeEmail from '@/components/compose-email';
@@ -219,7 +220,13 @@ export default function Mailbox({ account, credentials, onLogout }: MailboxProps
 
             <div className="border-t border-gray-200 pt-6">
               {selectedEmail.html ? (
-                <div dangerouslySetInnerHTML={{ __html: selectedEmail.html }} />
+                <div dangerouslySetInnerHTML={{ 
+                  __html: DOMPurify.sanitize(selectedEmail.html, {
+                    ALLOWED_TAGS: ['p', 'br', 'strong', 'em', 'u', 'a', 'ul', 'ol', 'li', 'h1', 'h2', 'h3', 'h4', 'h5', 'h6', 'blockquote', 'code', 'pre', 'img', 'div', 'span', 'table', 'tr', 'td', 'th', 'thead', 'tbody'],
+                    ALLOWED_ATTR: ['href', 'src', 'alt', 'title', 'class', 'style'],
+                    ALLOW_DATA_ATTR: false,
+                  })
+                }} />
               ) : (
                 <div className="whitespace-pre-wrap">{selectedEmail.text}</div>
               )}
