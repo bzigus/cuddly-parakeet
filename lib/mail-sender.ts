@@ -39,7 +39,7 @@ export class MailSender {
     // Sanitize HTML content to prevent XSS attacks
     const sanitizedHtml = params.html ? DOMPurify.sanitize(params.html, {
       ALLOWED_TAGS: ['p', 'br', 'strong', 'em', 'u', 'a', 'ul', 'ol', 'li', 'h1', 'h2', 'h3', 'h4', 'h5', 'h6', 'blockquote', 'code', 'pre', 'img'],
-      ALLOWED_ATTR: ['href', 'src', 'alt', 'title', 'class', 'style'],
+      ALLOWED_ATTR: ['href', 'src', 'alt', 'title', 'class'],
       ALLOW_DATA_ATTR: false,
     }) : undefined;
 

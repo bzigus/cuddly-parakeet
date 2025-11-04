@@ -51,12 +51,12 @@ export default function AccountSetup({ onAccountSetup }: AccountSetupProps) {
       provider,
       imap: {
         host: imapHost,
-        port: parseInt(imapPort),
+        port: parseInt(imapPort, 10),
         secure: true,
       },
       smtp: {
         host: smtpHost,
-        port: parseInt(smtpPort),
+        port: parseInt(smtpPort, 10),
         secure: true,
       },
     };

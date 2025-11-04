@@ -223,7 +223,7 @@ export default function Mailbox({ account, credentials, onLogout }: MailboxProps
                 <div dangerouslySetInnerHTML={{ 
                   __html: DOMPurify.sanitize(selectedEmail.html, {
                     ALLOWED_TAGS: ['p', 'br', 'strong', 'em', 'u', 'a', 'ul', 'ol', 'li', 'h1', 'h2', 'h3', 'h4', 'h5', 'h6', 'blockquote', 'code', 'pre', 'img', 'div', 'span', 'table', 'tr', 'td', 'th', 'thead', 'tbody'],
-                    ALLOWED_ATTR: ['href', 'src', 'alt', 'title', 'class', 'style'],
+                    ALLOWED_ATTR: ['href', 'src', 'alt', 'title', 'class'],
                     ALLOW_DATA_ATTR: false,
                   })
                 }} />
